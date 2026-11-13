@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Mining – Unit-wise Study Notes</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#1d2733;--mute:#5b6775;--acc:#0b6e6e;--acc2:#a4490f;--line:#dde2e8;--tip:#e8f3f3}
+@media(prefers-color-scheme:dark){:root{--bg:#12171d;--card:#1a2129;--ink:#e6ebf0;--mute:#9aa7b4;--acc:#4fc3c3;--acc2:#f0a36b;--line:#2c3743;--tip:#17302f}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 Georgia,"Times New Roman",serif}
+header{padding:2.5rem 1.2rem 1.5rem;max-width:860px;margin:auto}
+h1{font:700 2.1rem/1.2 system-ui,sans-serif;margin:0 0 .4rem}
+header p{color:var(--mute);margin:0}
+nav{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);z-index:5;padding:.5rem 1rem}
+nav div{max-width:860px;margin:auto;display:flex;gap:.5rem;flex-wrap:wrap}
+nav a{font:600 .9rem system-ui,sans-serif;text-decoration:none;color:var(--acc);border:1px solid var(--line);padding:.3rem .8rem;border-radius:99px;background:var(--card)}
+nav a:focus-visible,nav a:hover{outline:2px solid var(--acc)}
+main{max-width:860px;margin:auto;padding:0 1.2rem 4rem}
+section.unit{margin-top:3rem;scroll-margin-top:60px}
+h2{font:700 1.6rem/1.3 system-ui,sans-serif;color:var(--acc);border-bottom:3px solid var(--acc);padding-bottom:.4rem}
+h3{font:700 1.2rem/1.4 system-ui,sans-serif;margin:2rem 0 .4rem}
+h4{font:700 1rem system-ui,sans-serif;margin:1.2rem 0 .2rem;color:var(--acc2)}
+p{margin:.5rem 0}
+ul,ol{padding-left:1.3rem;margin:.4rem 0}
+li{margin:.25rem 0}
+.topic{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.2rem 1.2rem 1rem;margin-top:1.2rem}
+.tip{background:var(--tip);border-left:4px solid var(--acc);padding:.6rem 1rem;margin:.8rem 0;border-radius:0 6px 6px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;margin:.8rem 0}
+.tw{overflow-x:auto}
+th,td{border:1px solid var(--line);padding:.4rem .6rem;text-align:left;vertical-align:top}
+th{background:var(--tip);font-family:system-ui,sans-serif}
+code,pre{font-family:ui-monospace,Menlo,monospace;font-size:.88rem}
+pre{background:var(--tip);padding:.7rem 1rem;border-radius:6px;overflow-x:auto}
+footer{text-align:center;color:var(--mute);padding:2rem;font-family:system-ui,sans-serif;font-size:.9rem}
+</style>
+</head>
+<body>
+<header>
+<h1>Data Mining – Complete Unit-wise Notes</h1>
+<p>Written in simple language. Every topic of the syllabus (Units I to V) is covered with definitions, steps, examples and exam tips.</p>
+</header>
+<nav><div>
+<a href="#u1">Unit I</a><a href="#u2">Unit II</a><a href="#u3">Unit III</a><a href="#u4">Unit IV</a><a href="#u5">Unit V</a>
+</div></nav>
+<main>
+
+<!-- ================= UNIT I ================= -->
+<section class="unit" id="u1">
+<h2>Unit I – Introduction and Data Preprocessing</h2>
+
+<div class="topic">
+<h3>1.1 Fundamentals of Data Mining</h3>
+<p><b>Data mining</b> means digging out useful, hidden and previously unknown patterns from very large collections of data. The name comes from gold mining: you move a mountain of soil (raw data) to find a few nuggets of gold (knowledge). It is also known as <b>KDD – Knowledge Discovery from Data</b>, although strictly, data mining is the central step of the larger KDD process.</p>
+<p>Why do we need it? Today banks, shops, hospitals, mobile networks and websites record billions of facts every day. We are "data rich but information poor". A human cannot read ten million bills to understand what customers like, but an algorithm can. Data mining turns this stored data into decisions: which customers may leave, which transactions may be fraud, which products should be placed together.</p>
+<h4>Steps of the KDD process</h4>
+<ol>
+<li><b>Data cleaning</b> – remove noise and fix inconsistent data.</li>
+<li><b>Data integration</b> – combine data coming from several sources.</li>
+<li><b>Data selection</b> – retrieve only the data relevant to the analysis task.</li>
+<li><b>Data transformation</b> – convert data into forms suitable for mining, e.g. by summarising or normalising.</li>
+<li><b>Data mining</b> – apply intelligent methods to extract patterns.</li>
+<li><b>Pattern evaluation</b> – identify the truly interesting patterns using measures like support and confidence.</li>
+<li><b>Knowledge presentation</b> – show the result with charts, tables and reports.</li>
+</ol>
+<h4>Architecture</h4>
+<p>A typical system has data sources (databases, warehouse, web), a database or warehouse server, a <b>knowledge base</b> (concept hierarchies, user beliefs), the <b>mining engine</b>, a <b>pattern evaluation module</b> and a <b>user interface</b>. The kinds of data that can be mined include relational databases, data warehouses, transactional data, spatial, time-series, text, multimedia, data streams and the World Wide Web.</p>
+</div>
+
+<div class="topic">
+<h3>1.2 Data Mining Functionalities</h3>
+<p>Functionalities specify the <i>kinds of patterns</i> a mining task can discover. They fall into two groups: <b>descriptive</b> tasks describe the general properties of the existing data, while <b>predictive</b> tasks use the existing data to make predictions about future or unknown values.</p>
+<ul>
+<li><b>Concept/class description</b> – summarises a group of data. <i>Characterization</i> gives a short summary of the target class (for example, the common features of customers who spend more than ₹50,000 a year). <i>Discrimination</i> compares the target class with other classes (high spenders versus low spenders).</li>
+<li><b>Association analysis</b> – finds items that occur together. Example rule: <code>buys(bread) ⇒ buys(butter) [support = 5%, confidence = 70%]</code>. Support says how often the items appear together; confidence says how often butter is bought when bread is bought. Market-basket analysis is the classic use.</li>
+<li><b>Classification</b> – builds a model (decision tree, neural network, Bayesian classifier) from training data whose class labels are known, and uses it to label new data, such as "loan applicant is safe or risky".</li>
+<li><b>Prediction</b> – estimates a missing or future <i>numeric</i> value, such as next month's sales, normally by regression.</li>
+<li><b>Clustering</b> – groups objects into clusters when class labels are unknown. The principle is to maximise similarity inside a cluster and minimise similarity between clusters.</li>
+<li><b>Outlier analysis</b> – detects objects that do not follow the general pattern. One person's noise is another's signal; for instance, an unusual card purchase may indicate fraud.</li>
+<li><b>Evolution analysis</b> – studies how data changes over time, including trends, periodicity and similarity search in time-series data, such as share prices.</li>
+</ul>
+<div class="tip"><b>Remember:</b> Classification is <i>supervised</i> (labels known). Clustering is <i>unsupervised</i> (labels unknown). Not every discovered pattern is useful; a pattern is "interesting" if it is easy to understand, valid on new data, potentially useful and novel.</div>
+</div>
+
+<div class="topic">
+<h3>1.3 Classification of Data Mining Systems</h3>
+<p>Data mining is an interdisciplinary field that borrows from database systems, statistics, machine learning, pattern recognition, visualisation, information retrieval and high-performance computing. Because so many kinds of systems exist, it helps to classify them. This helps users choose the right software for their need, and helps researchers see gaps in the field.</p>
+<ul>
+<li><b>By the kind of database mined</b> – a system can be called relational, transactional, object-relational, spatial, time-series, text, multimedia, heterogeneous, legacy or Web mining system, depending on the data model or data type it handles. A system that mines relational data is a <i>relational miner</i>; one that mines spatial data is a <i>spatial miner</i>.</li>
+<li><b>By the kind of knowledge mined</b> – based on functionality: characterization, discrimination, association, classification, clustering, outlier analysis, evolution analysis. A comprehensive system provides many functions together. Systems may also mine knowledge at one level or at multiple levels of abstraction, and may mine regularities (common patterns) or irregularities (exceptions).</li>
+<li><b>By the kind of techniques utilised</b> – by the degree of user interaction (autonomous, interactive exploratory, query-driven) and by the data analysis method (database-oriented, data-warehouse/OLAP-oriented, machine learning, statistics, visualisation, pattern recognition, neural networks).</li>
+<li><b>By the applications adapted</b> – systems built for finance, telecommunications, retail, biology, DNA analysis, the stock market, intrusion detection and so on. Generic tools may not fit these tasks, so application-specific methods are used.</li>
+</ul>
+<p>An ideal data mining system should integrate smoothly with a database or warehouse system. Coupling schemes are: <b>no coupling</b>, <b>loose coupling</b>, <b>semi-tight coupling</b> and <b>tight coupling</b>. Tight coupling is best because mining becomes a part of the DB system, giving fast and scalable processing.</p>
+</div>
+
+<div class="topic">
+<h3>1.4 Major Issues in Data Mining</h3>
+<p>Data mining is powerful but faces challenges, grouped into five categories.</p>
+<h4>Mining methodology issues</h4>
+<p>Different users want different knowledge, so a system must mine <b>different kinds of knowledge</b> from the same data. It must allow mining at <b>multiple levels of abstraction</b> (drill-down and roll-up). It must handle <b>noisy and incomplete data</b>, because real data has errors and gaps. It must judge <b>pattern interestingness</b>, since a mining run can produce thousands of patterns and most are useless. It should use <b>background knowledge</b> such as concept hierarchies to guide the search.</p>
+<h4>User interaction issues</h4>
+<p>Mining should be <b>interactive</b>: the user should be able to refine the query, focus on part of the data and change the level. A <b>data mining query language</b> (like SQL for databases) is needed so that tasks can be specified easily. The results should be shown in <b>high-level, understandable forms</b>: graphs, rules, tables, visualisations.</p>
+<h4>Performance issues</h4>
+<p>Algorithms must be <b>efficient and scalable</b> for data of gigabytes or terabytes; running time must be predictable and acceptable. Because databases are large and distributed, <b>parallel, distributed and incremental</b> algorithms are required. Incremental methods update patterns when new data arrives without starting again.</p>
+<h4>Diversity of data types</h4>
+<p>Systems must handle <b>relational and complex data</b> (multimedia, text, spatial, time-series), and mine from <b>heterogeneous databases and global information systems</b> such as the Web, where formats and meanings differ.</p>
+<h4>Social issues</h4>
+<p>Mining may threaten <b>privacy</b> by profiling individuals, raise <b>security</b> concerns and lead to <b>misuse</b> of discovered knowledge. Protecting data (anonymisation, privacy-preserving mining) is an important challenge.</p>
+</div>
+
+<div class="topic">
+<h3>1.5 Data Preprocessing: Why Is It Needed?</h3>
+<p>Raw data collected in real life is almost never ready for mining. It is usually <b>dirty</b> in three ways:</p>
+<ul>
+<li><b>Incomplete</b> – some attribute values are missing, or only summary data is available. A customer's income may be left blank in a form, or the machine may have stopped recording.</li>
+<li><b>Noisy</b> – the data contains errors or outliers, such as age = −10 or salary = 10,000,000 because of typing mistakes or faulty sensors.</li>
+<li><b>Inconsistent</b> – the same thing is stored in different ways: rating "1, 2, 3" in one table and "A, B, C" in another; or the same customer appears with two spellings.</li>
+</ul>
+<p>The reasons are many: faulty instruments, human or computer error during entry, transmission errors, different data sources with different conventions, and duplicate records. If we mine such data, the discovered patterns will also be poor: <b>garbage in, garbage out</b>. Quality decisions need quality data.</p>
+<p>Data quality is measured by <b>accuracy, completeness, consistency, timeliness, believability and interpretability</b>. Preprocessing improves these and makes mining faster, more accurate and easier. Major preprocessing tasks are <b>data cleaning, data integration, data transformation, data reduction and data discretization</b>. These tasks are not strictly separate; for example, removing redundant attributes is both integration and reduction. In practice preprocessing often takes <b>more than half of the total effort</b> in a data mining project, which shows how important it is.</p>
+</div>
+
+<div class="topic">
+<h3>1.6 Data Cleaning</h3>
+<p>Data cleaning (data cleansing) fills in missing values, smooths noisy data, identifies or removes outliers and resolves inconsistencies. Users will not trust results from a system that works on dirty data.</p>
+<h4>Handling missing values</h4>
+<ol>
+<li><b>Ignore the tuple</b> – easy but wasteful, especially when many values are missing.</li>
+<li><b>Fill in manually</b> – accurate but too slow for large data.</li>
+<li><b>Use a global constant</b> such as "Unknown" – simple, but the miner may treat "Unknown" as an interesting value.</li>
+<li><b>Use the attribute mean or median</b> – the median is better for skewed data.</li>
+<li><b>Use the class-wise mean</b> – the mean of tuples belonging to the same class.</li>
+<li><b>Use the most probable value</b> – predicted with regression, a decision tree or Bayesian inference. It is the most popular and accurate method.</li>
+</ol>
+<h4>Handling noisy data</h4>
+<p><b>Binning</b> sorts the data and distributes it into equal-size bins; values are smoothed using their neighbours. <i>Example:</i> sorted prices 4, 8, 15, 21, 21, 24, 25, 28, 34 in three bins: (4, 8, 15), (21, 21, 24), (25, 28, 34). Smoothing by <i>bin means</i> gives (9, 9, 9), (22, 22, 22), (29, 29, 29). Smoothing by <i>bin boundaries</i> replaces each value by the nearest boundary: (4, 4, 15), (21, 21, 24), (25, 25, 34).</p>
+<p><b>Regression</b> fits the data to a function (linear or multiple) and replaces noisy values by the fitted ones. <b>Clustering</b> groups similar values; values falling outside all clusters are outliers.</p>
+<h4>Data cleaning as a process</h4>
+<p><b>Discrepancy detection</b> uses metadata (domain, range, dependencies), rules (unique, consecutive, null rules) and commercial tools (data scrubbing, data auditing). <b>Data migration tools</b> and <b>ETL tools</b> then transform the data. The two steps are repeated in an iterative, interactive way.</p>
+</div>
+
+<div class="topic">
+<h3>1.7 Data Integration and Transformation</h3>
+<h4>Data integration</h4>
+<p>Data integration merges data from multiple sources (databases, data cubes, flat files) into a single coherent store such as a data warehouse. Issues to handle:</p>
+<ul>
+<li><b>Schema integration and entity identification</b> – matching equal entities with different names, e.g. <i>cust_id</i> in one database and <i>customer_number</i> in another. Metadata helps to avoid errors.</li>
+<li><b>Redundancy</b> – an attribute is redundant if it can be derived from others (annual revenue from monthly revenue). Redundancy is found by <b>correlation analysis</b>. For numeric data the correlation coefficient is <code>r = Σ(a−Ā)(b−B̄) / (n·σA·σB)</code>: r &gt; 0 means positive correlation, r = 0 independent, r &lt; 0 negative. For nominal data the <b>χ² test</b> is used. Duplicate tuples should also be detected.</li>
+<li><b>Detection and resolution of data value conflicts</b> – the same real-world value may differ between sources because of units (metric vs British), scale or encoding.</li>
+</ul>
+<h4>Data transformation</h4>
+<p>Transformation changes the data into forms suitable for mining:</p>
+<ul>
+<li><b>Smoothing</b> – removes noise (binning, regression, clustering).</li>
+<li><b>Aggregation</b> – summary operations, such as daily sales into monthly sales; used to build data cubes.</li>
+<li><b>Generalization</b> – low-level data replaced by higher-level concepts through hierarchies (street → city → country).</li>
+<li><b>Normalization</b> – scales values into a small range such as 0.0–1.0 so that large-valued attributes do not dominate distance calculations.</li>
+<li><b>Attribute (feature) construction</b> – new attributes built from existing ones, such as area = height × width.</li>
+</ul>
+</div>
+
+<div class="topic">
+<h3>1.8 Normalization Methods (part of Transformation)</h3>
+<p>Normalization is especially important for distance-based methods such as clustering, nearest-neighbour classification and neural networks. Suppose income is in thousands (12,000–98,000) and age is in tens (20–70); without normalization, income would swamp age.</p>
+<ul>
+<li><b>Min-max normalization</b> performs a linear change of the original data: <code>v' = ((v − min) / (max − min)) × (new_max − new_min) + new_min</code>. <i>Example:</i> income range 12,000–98,000 mapped to [0, 1]; for v = 73,600: (73,600 − 12,000)/(98,000 − 12,000) = 0.716. It preserves the relations among the original values but fails if a new input falls outside the original range.</li>
+<li><b>Z-score normalization</b> (zero-mean) uses the mean and standard deviation: <code>v' = (v − mean) / σ</code>. <i>Example:</i> mean = 54,000, σ = 16,000; v = 73,600 gives (73,600 − 54,000)/16,000 = 1.225. Useful when min and max are unknown or outliers dominate. A variation uses the mean absolute deviation instead of σ, which is more robust to outliers.</li>
+<li><b>Normalization by decimal scaling</b> moves the decimal point: <code>v' = v / 10<sup>j</sup></code>, where j is the smallest integer such that max(|v'|) &lt; 1. If values range from −986 to 917, j = 3, so −986 becomes −0.986 and 917 becomes 0.917.</li>
+</ul>
+<p>Note that normalization changes the original data, so the parameters (min, max, mean, σ) should be saved to apply the same transformation to future data.</p>
+</div>
+
+<div class="topic">
+<h3>1.9 Data Reduction</h3>
+<p>A data warehouse may hold terabytes of data, and running complex mining on it may take very long. <b>Data reduction</b> obtains a reduced representation that is much smaller in volume but produces almost the same analytical results.</p>
+<ol>
+<li><b>Data cube aggregation</b> – aggregation is applied to build cubes. The cube at the lowest level is the base cuboid; higher cuboids give summarised data. Queries are answered using the smallest relevant cuboid, e.g. yearly sales instead of per-transaction sales.</li>
+<li><b>Attribute subset selection</b> – removes irrelevant or redundant attributes (such as phone number when predicting music taste). Heuristic methods: <i>stepwise forward selection</i> (start empty, add the best attribute), <i>stepwise backward elimination</i> (start with all, remove the worst), a combination of both, and <i>decision tree induction</i> (attributes not in the tree are dropped).</li>
+<li><b>Dimensionality reduction</b> – encoding mechanisms reduce size. <b>Discrete Wavelet Transform (DWT)</b> keeps only strongest wavelet coefficients, giving lossy compression. <b>Principal Component Analysis (PCA)</b> finds k orthogonal vectors (principal components) that best represent the data, projecting n-dimensional data into k ≤ n dimensions.</li>
+<li><b>Numerosity reduction</b> – replaces data with smaller forms. <i>Parametric</i>: regression and log-linear models store only parameters. <i>Non-parametric</i>: <b>histograms</b> (equal-width or equal-frequency buckets), <b>clustering</b> (store cluster centre and size), and <b>sampling</b> – SRSWOR (without replacement), SRSWR (with replacement), cluster sample and stratified sample.</li>
+<li><b>Data compression</b> – <b>lossless</b> (original fully reconstructed, as in string compression) or <b>lossy</b> (only approximate reconstruction, as in image and audio compression).</li>
+</ol>
+</div>
+
+<div class="topic">
+<h3>1.10 Discretization and Concept Hierarchy Generation</h3>
+<p><b>Discretization</b> reduces the number of values of a continuous attribute by dividing its range into intervals, and replaces actual values by interval labels. For example, age can become 0–18, 19–40, 41–65 and 66+. This makes data smaller, simpler and suitable for algorithms (like decision trees and association rules) that work on categorical data. It can be <b>supervised</b> (uses class information) or <b>unsupervised</b>, and <b>top-down</b> (splitting) or <b>bottom-up</b> (merging).</p>
+<p>A <b>concept hierarchy</b> replaces low-level values with higher-level concepts: age 25 → young adult → adult → person. It allows mining at multiple levels of abstraction.</p>
+<h4>For numeric data</h4>
+<ul>
+<li><b>Binning</b> – equal-width or equal-frequency bins, applied recursively; unsupervised.</li>
+<li><b>Histogram analysis</b> – partitions values into buckets, repeated until a stopping condition.</li>
+<li><b>Cluster analysis</b> – clusters become the intervals, and sub-clusters form lower levels.</li>
+<li><b>Entropy-based discretization</b> – supervised; picks the split point giving minimum entropy (maximum information gain) and recursively splits until a stop condition.</li>
+<li><b>Interval merging by χ² analysis (ChiMerge)</b> – starts with each value as an interval and merges adjacent intervals with similar class distribution.</li>
+<li><b>Segmentation by natural partitioning (3-4-5 rule)</b> – divides a range into 3, 4 or 5 equal intervals according to the most significant digit: 3, 6, 7 or 9 distinct values → 3 intervals; 2, 4 or 8 → 4 intervals; 5 or 10 → 5 intervals.</li>
+</ul>
+<h4>For categorical data</h4>
+<ul>
+<li>Explicit ordering by the user, e.g. <i>street &lt; city &lt; state &lt; country</i>.</li>
+<li>Specifying a group of attributes explicitly, with the system sorting them.</li>
+<li>Specifying only a partial set of attributes.</li>
+<li><b>Automatic generation</b> by counting distinct values: the attribute with the most distinct values is placed at the lowest level (street has more values than country). Exceptions such as <i>weekday</i> are corrected by the user.</li>
+</ul>
+</div>
+</section>
+
+<!-- ================= UNIT II ================= -->
+<section class="unit" id="u2">
+<h2>Unit II – Data Warehouse and OLAP Technology for Data Mining</h2>
+
+<div class="topic">
+<h3>2.1 Data Warehouse: Meaning and Features</h3>
+<p>A <b>data warehouse</b> is a large, central repository of information collected from many different sources (sales system, HR system, web logs) and stored under one unified schema. It is built to support management decisions, not day-to-day transactions. In the words of W. H. Inmon, it is a <b>subject-oriented, integrated, time-variant and non-volatile</b> collection of data that supports management's decision-making process.</p>
+<ul>
+<li><b>Subject-oriented</b> – organised around major subjects such as customer, supplier, product and sales, rather than around operations such as billing or inventory update. It excludes data not useful for decisions.</li>
+<li><b>Integrated</b> – built by merging several databases, flat files and online records. Data cleaning and integration make naming, coding and units consistent (e.g. "M/F" and "Male/Female" become one format).</li>
+<li><b>Time-variant</b> – stores historical information (5–10 years). Every key structure contains a time element, so trends and changes can be studied.</li>
+<li><b>Non-volatile</b> – data is physically separate from the operational database. Updates, deletes and transaction processing do not happen in the warehouse; only initial loading and read access (periodic refresh) are needed.</li>
+</ul>
+<p><b>Data warehousing</b> is the process of constructing and using a warehouse: cleaning, integration, transformation, loading and periodic refresh. It differs from a traditional heterogeneous DB integration (query-driven approach, where a query is translated for each source) because it uses an <b>update-driven</b> approach: information is integrated in advance and stored, giving high performance for analysis.</p>
+<h4>Why keep a separate warehouse? (OLTP vs OLAP)</h4>
+<p>Operational systems (OLTP) are tuned for fast, small transactions. Warehouse queries (OLAP) are complex, scan huge data and need summarised, historical views. Running them on the operational database would slow down daily business and lock data.</p>
+<div class="tw"><table><tr><th>Feature</th><th>OLTP</th><th>OLAP</th></tr>
+<tr><td>Users</td><td>Clerks, IT staff</td><td>Managers, analysts</td></tr>
+<tr><td>Function</td><td>Day-to-day operations</td><td>Decision support</td></tr>
+<tr><td>DB design</td><td>ER model, application-oriented</td><td>Star/snowflake, subject-oriented</td></tr>
+<tr><td>Data</td><td>Current, detailed</td><td>Historical, summarised</td></tr>
+<tr><td>Access</td><td>Short read/write</td><td>Mostly read, complex queries</td></tr>
+<tr><td>Size</td><td>MB–GB</td><td>GB–TB</td></tr>
+<tr><td>Metric</td><td>Transaction throughput</td><td>Query response time</td></tr></table></div>
+</div>
+
+<div class="topic">
+<h3>2.2 Multidimensional Data Model: Data Cube</h3>
+<p>Warehouses and OLAP tools use a <b>multidimensional model</b>, where data is viewed as a <b>data cube</b>. A cube lets data be modelled and seen in many dimensions. It is defined by <b>dimensions</b> and <b>facts</b>.</p>
+<ul>
+<li><b>Dimensions</b> are the perspectives or entities with respect to which an organisation wants to keep records, e.g. <i>time, item, branch, location</i>. Each dimension has a <b>dimension table</b> (e.g. item(item_name, brand, type)).</li>
+<li><b>Facts</b> are numeric measures, e.g. <i>dollars_sold, units_sold, budget</i>. They are stored in a <b>fact table</b>, which contains the measures plus keys to each dimension table.</li>
+</ul>
+<p>A 2-D view shows, for example, <i>time × item</i> for one location. Adding location gives a 3-D cube; adding supplier gives a 4-D cube, which is seen as a series of 3-D cubes. Every combination of dimensions forms a <b>cuboid</b>. The lowest-level cuboid holding all dimensions is the <b>base cuboid</b>; the highest-level one that summarises everything (a single value, e.g. total sales) is the <b>apex cuboid</b>. Together, the lattice of cuboids is the <b>data cube</b>. For n dimensions with no hierarchies there are 2<sup>n</sup> cuboids; if dimension i has Lᵢ levels, the total is Π(Lᵢ + 1).</p>
+<h4>Concept hierarchies</h4>
+<p>A concept hierarchy maps low-level concepts to higher-level ones. For location: <i>street &lt; city &lt; province &lt; country</i> (total order); for time: <i>day &lt; {month, week} &lt; quarter &lt; year</i> (partial order, since weeks do not fit exactly into months). Hierarchies make roll-up and drill-down possible.</p>
+<h4>Types of measures</h4>
+<ul>
+<li><b>Distributive</b> – can be computed by partitioning the data, aggregating each part, then aggregating again: sum, count, min, max.</li>
+<li><b>Algebraic</b> – computed from a fixed number of distributive measures: average = sum/count, standard deviation.</li>
+<li><b>Holistic</b> – no fixed-size sub-result can describe it: median, mode, rank. These are hard to compute in cubes.</li>
+</ul>
+</div>
+
+<div class="topic">
+<h3>2.3 Schemas for Multidimensional Databases</h3>
+<p>A <b>schema</b> is the logical design of the warehouse, showing how fact and dimension tables are linked.</p>
+<h4>Star schema</h4>
+<p>The most common model. A large <b>central fact table</b> (no redundancy) is connected to a <b>set of dimension tables</b>, one per dimension, so the picture looks like a star. Each dimension table may contain redundancy since hierarchies are flattened in one table (e.g. the <i>location</i> table repeats country for every city). Advantage: simple, few joins, fast queries. Disadvantage: redundant data.</p>
+<h4>Snowflake schema</h4>
+<p>A variant where some dimension tables are <b>normalised</b> into additional tables, so the diagram looks like a snowflake. For example, item → supplier, and location → city. It saves storage and reduces redundancy, but needs more joins, which slows queries and makes browsing harder. Therefore it is less popular than the star schema.</p>
+<h4>Fact constellation (galaxy schema)</h4>
+<p>Sophisticated applications need <b>multiple fact tables sharing dimension tables</b>, like a collection of stars. Example: a <i>Sales</i> fact table and a <i>Shipping</i> fact table both using the <i>time, item, location</i> dimensions. Used for enterprise-wide warehouses.</p>
+<div class="tip"><b>Data warehouse vs data mart:</b> Enterprise-wide design usually uses a fact constellation; a department-level data mart (a subset of the warehouse for one group, such as marketing) generally uses a star or snowflake schema.</div>
+</div>
+
+<div class="topic">
+<h3>2.4 OLAP Operations in the Multidimensional Model</h3>
+<p><b>OLAP (On-Line Analytical Processing)</b> offers interactive operations on a cube so that the user can look at data from different angles and levels. The typical operations are:</p>
+<ul>
+<li><b>Roll-up (drill-up)</b> – aggregates data by climbing up a concept hierarchy (city → country) or by dimension reduction (removing a dimension). Result: less detail.</li>
+<li><b>Drill-down</b> – the reverse: goes from less detailed to more detailed data by moving down a hierarchy (quarter → month) or adding a dimension. Dimension values need to be available at the lower level.</li>
+<li><b>Slice</b> – selects a single value on one dimension, producing a sub-cube. Example: time = "Q1" gives a plane of item × location.</li>
+<li><b>Dice</b> – selects values on two or more dimensions, producing a smaller sub-cube: (location = Delhi or Patna) and (time = Q1 or Q2) and (item = phone or laptop).</li>
+<li><b>Pivot (rotate)</b> – rotates the axes of the view to give another presentation, e.g. swapping item and location axes in a 2-D table.</li>
+<li><b>Other operations</b> – <i>drill-across</i> (queries involving more than one fact table) and <i>drill-through</i> (go down to the back-end relational tables), <i>top-N/bottom-N</i> ranking, and statistical computations like moving average.</li>
+</ul>
+<p>OLAP operations must give answers quickly, even for terabytes of data, which is why special storage and indexing techniques (Section 2.7) are used.</p>
+</div>
+
+<div class="topic">
+<h3>2.5 Data Warehouse Architecture</h3>
+<h4>Steps in design and construction</h4>
+<p>First, choose the business process (e.g. orders, billing) and the <b>grain</b> (the atomic level of the fact table); then choose dimensions and measures. Design may be <b>top-down</b> (enterprise plan first), <b>bottom-up</b> (start with experimental data marts), or a <b>combined</b> approach. Software engineering models like waterfall and spiral can be applied.</p>
+<h4>Three-tier architecture</h4>
+<ol>
+<li><b>Bottom tier – warehouse database server</b>: almost always a relational DBMS. Data from operational databases and external sources is fed using <b>back-end tools</b> and utilities that perform <b>extraction, cleaning, transformation (ETL), load and refresh</b>. This tier also holds the <b>metadata repository</b> and a <b>monitor/integrator</b>.</li>
+<li><b>Middle tier – OLAP server</b>: implemented as ROLAP, MOLAP or HOLAP; presents multidimensional views to the client.</li>
+<li><b>Top tier – front-end client layer</b>: query and reporting tools, analysis tools, and data mining tools (trend analysis, prediction).</li>
+</ol>
+<h4>Warehouse models</h4>
+<ul>
+<li><b>Enterprise warehouse</b> – collects information about all subjects across the entire organisation; needs extensive business modelling; size from GB to TB.</li>
+<li><b>Data mart</b> – a subset of corporate data for a specific group of users. <i>Independent</i> marts take data from operational systems directly; <i>dependent</i> marts take it from an enterprise warehouse.</li>
+<li><b>Virtual warehouse</b> – a set of <b>views</b> over operational databases. Easy to build, but needs excess capacity on operational servers.</li>
+</ul>
+</div>
+
+<div class="topic">
+<h3>2.6 Metadata Repository and OLAP Server Types</h3>
+<p><b>Metadata</b> is "data about data". It defines warehouse objects and guides loading, access and administration. It includes:</p>
+<ul>
+<li>A <b>description of the warehouse structure</b>: schema, views, dimensions, hierarchies, derived data definitions, data mart locations.</li>
+<li><b>Operational metadata</b>: data lineage (history of migrated data and transformations), currency of data (active, archived, purged), monitoring information (usage statistics, error reports, audit trails).</li>
+<li>The <b>algorithms used for summarisation</b> and the <b>mapping from the operational environment</b> to the warehouse (source databases, extraction, cleaning rules).</li>
+<li><b>Data related to system performance</b>: indices, profiles, refresh rules; and <b>business metadata</b>: business terms, ownership, charging policies.</li>
+</ul>
+<h4>OLAP server implementations</h4>
+<table><tr><th>Type</th><th>How it works</th><th>Strengths / weaknesses</th></tr>
+<tr><td><b>ROLAP</b> (Relational OLAP)</td><td>Uses a relational or extended-relational DBMS; the middle tier translates OLAP operations into SQL. Fact and dimension tables stay relational.</td><td>Handles very large data and scales well; slower than MOLAP for complex aggregations.</td></tr>
+<tr><td><b>MOLAP</b> (Multidimensional OLAP)</td><td>Array-based multidimensional storage; data is pre-aggregated and fast-indexed.</td><td>Very fast for small/medium data; wastes space with sparse cubes (can use sparse-matrix compression).</td></tr>
+<tr><td><b>HOLAP</b> (Hybrid OLAP)</td><td>Detailed data in relational tables (ROLAP), aggregations in arrays (MOLAP).</td><td>Combines scalability of ROLAP and speed of MOLAP.</td></tr>
+<tr><td><b>Specialised SQL servers</b></td><td>Provide advanced SQL support for read-only star/snowflake queries.</td><td>Efficient SQL-based analysis.</td></tr></table>
+</div>
+
+<div class="topic">
+<h3>2.7 Data Warehouse Implementation</h3>
+<p>Warehouses must give very fast answers on huge volumes. Implementation therefore focuses on efficient cube computation, selection of what to precompute, indexing and query processing.</p>
+<h4>Efficient computation of data cubes</h4>
+<p>The <b>compute cube</b> operator (e.g. <code>CUBE BY item, city, year</code>) computes aggregates over all subsets of the dimensions, giving 2<sup>n</sup> group-bys. This can need huge storage, especially with hierarchies. Choices: <b>full materialisation</b> (precompute all cuboids – fast queries, much storage), <b>no materialisation</b> (compute on the fly – slow), or <b>partial materialisation</b> (select a suitable subset). Methods to compute: <i>sort/hash sharing</i>, <i>multiway array aggregation</i> (chunks the array and aggregates several cuboids at once), and <b>BUC</b> (bottom-up computation) which also supports <b>iceberg cubes</b> that keep only cells meeting a minimum threshold (e.g. count ≥ 100), pruning using the Apriori idea.</p>
+<h4>Selecting cuboids to materialise</h4>
+<p>A greedy algorithm picks cuboids that give the biggest benefit per unit of storage, considering query frequency and size. The <b>shell fragments</b> method precomputes small groups of dimensions for high-dimensional data.</p>
+<h4>Indexing OLAP data</h4>
+<ul>
+<li><b>Bitmap index</b> – for each distinct value of an attribute, a bit vector marks the rows containing it. Joins and aggregations become fast bit operations (AND, OR). Best for low-cardinality attributes (gender, region).</li>
+<li><b>Join index</b> – precomputes the join between a dimension table and the fact table by storing, for each dimension value, the list of matching fact-table row IDs. <b>Bitmapped join indices</b> combine both ideas.</li>
+</ul>
+<h4>Efficient processing of OLAP queries</h4>
+<p>(1) Determine which operations are performed on the available cuboids (translate roll-up, drill-down, slice and dice into selections, projections, group-by). (2) Determine which materialised cuboids are relevant and pick the one with the lowest cost (smallest size), then use indices to speed access.</p>
+</div>
+
+<div class="topic">
+<h3>2.8 Further Development of Data Cube Technology</h3>
+<p>Basic cubes only report aggregated values. Newer techniques make cubes more intelligent and efficient for analysis.</p>
+<h4>Discovery-driven exploration of data cubes</h4>
+<p>In hypothesis-driven exploration the analyst must guess where interesting data hides and drill down by trial and error, which is tiring in large cubes. In <b>discovery-driven</b> exploration, precomputed measures indicate <b>exceptions</b> automatically: a cell value is an exception if it differs significantly from the value expected by a statistical model using the cell's position and its neighbours. Three measures guide the user, shown as visual cues (colour shades): <b>SelfExp</b> (surprise of the cell itself), <b>InExp</b> (surprise hidden beneath the cell, when drilling down) and <b>PathExp</b> (degree of surprise for each drill-down path). The analyst quickly sees where to explore.</p>
+<h4>Complex aggregation at multiple granularities: multifeature cubes</h4>
+<p>Traditional cubes compute simple aggregates. <b>Multifeature cubes</b> compute <b>complex queries with several dependent aggregates</b> at multiple granularities. Example: "For each item and region, find the <i>maximum price in 2025</i>, and the <i>total sales among all tuples that have that maximum price</i>." The second aggregate depends on the first. Such queries are expressed with extended SQL, using grouping variables, and computed efficiently using techniques similar to ordinary cube computation.</p>
+<h4>Other advances</h4>
+<ul>
+<li><b>Prediction cubes</b> – integrate prediction models (like classifiers) with cubes to explore prediction accuracy at different levels.</li>
+<li><b>Sampling cubes</b> – use sampling for statistically reliable answers when only a sample of the data is available.</li>
+<li><b>Ranking cubes</b> – efficiently answer top-k queries.</li>
+<li><b>Cube gradient analysis</b> – find cells whose measure changes strongly compared to ancestors, siblings or descendants.</li>
+</ul>
+</div>
+
+<div class="topic">
+<h3>2.9 From Data Warehousing to Data Mining</h3>
+<h4>Data warehouse usage</h4>
+<p>Warehouses are used in three stages: (1) <b>information processing</b> – querying, basic statistical analysis, reporting with tables, charts and graphs; (2) <b>analytical processing</b> – multidimensional analysis with OLAP operations such as slice, dice, drill-down and roll-up, on summarised and detailed historical data; (3) <b>data mining</b> – discovering hidden patterns and associations, building classification and prediction models, and presenting results with visual tools. Mining goes one step beyond OLAP: OLAP summarises and compares data, while mining finds <i>new knowledge</i> automatically.</p>
+<h4>From OLAP to OLAM</h4>
+<p><b>On-Line Analytical Mining (OLAM)</b>, also called OLAP mining, integrates OLAP with data mining so that mining is done in multidimensional databases, interactively and at various levels of abstraction. It is attractive for four reasons:</p>
+<ul>
+<li><b>High quality of data in warehouses</b> – data is already cleaned, integrated and consistent, so preprocessing cost is saved.</li>
+<li><b>Available information-processing infrastructure</b> – access methods, ODBC/OLE DB connections, OLAP tools and reporting are already built around warehouses.</li>
+<li><b>OLAP-based exploratory data analysis</b> – the user can slice, dice, drill and pivot to focus on interesting subsets before and during mining.</li>
+<li><b>On-line selection of data mining functions</b> – the user can switch between characterization, association, classification, prediction and clustering interactively, on any chosen portion of the cube.</li>
+</ul>
+<h4>OLAM architecture</h4>
+<p>An <b>OLAM engine</b> sits beside the <b>OLAP engine</b>; both work on the same multidimensional database (data cube) through an API, with a data warehouse underneath. The user interface (GUI API) sends tasks to the OLAM or OLAP engine, and the cube is built from the warehouse after cleaning and integration. Thus a user can run a mining function after OLAP operations in the same environment.</p>
+</div>
+</section>
+
+<!-- ================= UNIT III ================= -->
+<section class="unit" id="u3">
+<h2>Unit III – Concept Description: Characterization and Comparison</h2>
+
+<div class="topic">
+<h3>3.1 Data Generalization and Summarization-Based Characterization</h3>
+<p><b>Concept description</b> gives a short, understandable summary of a collection of data (a class). <b>Characterization</b> summarises the general features of the <i>target class</i>; <b>comparison</b> (discrimination) compares target and <i>contrasting</i> classes.</p>
+<h4>Attribute-Oriented Induction (AOI)</h4>
+<p>AOI generalises data by moving up concept hierarchies. Steps:</p>
+<ol>
+<li><b>Data focusing</b>: collect task-relevant data using a query.</li>
+<li><b>Attribute removal</b>: remove an attribute if it has many distinct values and no generalisation operator (e.g. name).</li>
+<li><b>Attribute generalization</b>: if there is a hierarchy, replace values by higher-level concepts (city → country).</li>
+<li><b>Attribute generalization control</b>: use a threshold (attribute threshold) to stop when the number of distinct values is small enough.</li>
+<li><b>Aggregation</b>: merge identical tuples and accumulate <i>count</i>.</li>
+</ol>
+<p>The result is a <b>generalized relation</b>, which can be shown as a crosstab, bar chart, pie chart, or as a <b>characteristic rule</b> such as: <code>grad_student(x) ⇒ (birth_place = Canada ∧ GPA = excellent) [t-weight = 53%]</code>.</p>
+<p><b>Efficient implementation</b>: instead of doing AOI repeatedly, a cube-based approach pre-computes generalisations.</p>
+</div>
+
+<div class="topic">
+<h3>3.2 Analytical Characterization: Analysis of Attribute Relevance</h3>
+<p>Some attributes are not useful for characterising a class. <b>Attribute relevance analysis</b> removes irrelevant or weak attributes before generalisation.</p>
+<ul>
+<li><b>Information gain / entropy</b>: <code>Info(D) = −Σ pᵢ log₂ pᵢ</code>. The attribute with higher information gain is more relevant to the class.</li>
+<li>Other measures: Gini index, uncertainty coefficient, correlation coefficient, χ².</li>
+</ul>
+<h4>Steps</h4>
+<ol>
+<li><b>Data collection</b> of target and contrasting classes.</li>
+<li><b>Preliminary relevance analysis</b> using conservative AOI to reduce attributes.</li>
+<li><b>Relevance analysis</b>: calculate information gain for each remaining attribute and rank them.</li>
+<li>Remove attributes below a relevance threshold.</li>
+<li><b>Generate the concept description</b> with AOI on the remaining attributes.</li>
+</ol>
+</div>
+
+<div class="topic">
+<h3>3.3 Mining Class Comparisons: Discriminating Between Different Classes</h3>
+<p>Class comparison finds features that <i>distinguish</i> the target class from the contrasting class (e.g. graduate vs undergraduate students).</p>
+<h4>Steps</h4>
+<ol>
+<li><b>Data collection</b>: get target and contrasting class data (two tables).</li>
+<li><b>Dimension relevance analysis</b>: keep only relevant dimensions.</li>
+<li><b>Synchronous generalization</b>: generalise both classes to the same abstraction level.</li>
+<li><b>Presentation</b>: as tables, graphs or <b>discriminant rules</b>, showing <i>t-weight</i> (how typical the tuple is within its class) and <i>d-weight</i> (how well it discriminates it from other classes).</li>
+</ol>
+<p><code>t-weight = count(tuple in class) / count(all tuples in class)</code> and <code>d-weight = count(tuple in target class) / count(tuple in all classes)</code>. A high d-weight means the tuple strongly distinguishes the target class.</p>
+</div>
+
+<div class="topic">
+<h3>3.4 Mining Descriptive Statistical Measures in Large Databases</h3>
+<h4>Measuring central tendency</h4>
+<ul>
+<li><b>Mean</b> = Σx / n; <b>weighted mean</b> = Σwᵢxᵢ / Σwᵢ.</li>
+<li><b>Median</b>: middle value of the sorted data. For grouped data: <code>L + ((n/2 − F)/f) × w</code>.</li>
+<li><b>Mode</b>: most frequent value (unimodal, bimodal...). <code>mean − mode ≈ 3 × (mean − median)</code> for moderately skewed data.</li>
+</ul>
+<h4>Measuring dispersion (spread)</h4>
+<ul>
+<li><b>Range</b> = max − min.</li>
+<li><b>Quartiles</b>: Q1 (25th percentile), Q2 (median), Q3 (75th percentile). <b>IQR = Q3 − Q1</b>.</li>
+<li><b>Five-number summary</b>: Min, Q1, Median, Q3, Max → drawn as a <b>boxplot</b>. Outliers are usually values beyond 1.5 × IQR above Q3 or below Q1.</li>
+<li><b>Variance</b>: <code>σ² = Σ(x − mean)² / n</code>; <b>standard deviation σ</b> = √variance. σ = 0 means all values are equal.</li>
+</ul>
+<h4>Graphic displays</h4>
+<p><b>Histogram</b>, <b>quantile plot</b>, <b>Q-Q plot</b> (compare two distributions), <b>scatter plot</b> (see relationship between two attributes), and <b>loess curve</b> (smooth trend line).</p>
+</div>
+</section>
+
+<!-- ================= UNIT IV ================= -->
+<section class="unit" id="u4">
+<h2>Unit IV – Mining Association Rules in Large Databases</h2>
+
+<div class="topic">
+<h3>4.1 Association Rule Mining</h3>
+<p>Finds interesting relationships among items in a data set. Classic example is <b>market-basket analysis</b>: which products are bought together.</p>
+<ul>
+<li><b>Itemset</b>: a set of items. A <b>k-itemset</b> has k items.</li>
+<li><b>Rule</b>: <code>A ⇒ B</code> (if A then B).</li>
+<li><b>Support</b> = P(A ∪ B) = number of transactions with both A and B / total transactions.</li>
+<li><b>Confidence</b> = P(B | A) = support(A ∪ B) / support(A).</li>
+<li><b>Strong rule</b>: satisfies both minimum support and minimum confidence.</li>
+<li><b>Frequent itemset</b>: support ≥ minimum support.</li>
+</ul>
+<p>Two steps: (1) find all frequent itemsets; (2) generate strong rules from them.</p>
+</div>
+
+<div class="topic">
+<h3>4.2 Mining Single-Dimensional Boolean Association Rules (Apriori)</h3>
+<p>"Single-dimensional" means only one predicate (e.g. buys). "Boolean" means items are present or absent.</p>
+<h4>Apriori property</h4>
+<p><b>All non-empty subsets of a frequent itemset must also be frequent.</b> So if an itemset is infrequent, all its supersets are infrequent and can be pruned.</p>
+<h4>Apriori algorithm</h4>
+<ol>
+<li>Scan DB, count each item → <b>L1</b> (frequent 1-itemsets).</li>
+<li><b>Join step</b>: join Lₖ₋₁ with itself to form candidates Cₖ.</li>
+<li><b>Prune step</b>: remove any candidate that has an infrequent subset.</li>
+<li>Scan DB, count candidates, keep those ≥ min support → Lₖ.</li>
+<li>Repeat until no more frequent itemsets.</li>
+<li>For each frequent itemset l, for each non-empty subset s, output <code>s ⇒ (l − s)</code> if confidence ≥ min confidence.</li>
+</ol>
+<p><i>Example:</i> Transactions T1{A,B,C}, T2{A,B}, T3{A,C}, T4{B,C}; min support = 2. L1 = {A:3, B:3, C:3}. C2 = {AB:2, AC:2, BC:2}, all frequent. C3 = {ABC:1} → not frequent, stop. Rule A ⇒ B has confidence 2/3 = 66.7%.</p>
+<h4>Improving Apriori efficiency</h4>
+<ul>
+<li><b>Hash-based technique</b>: hash buckets reduce candidate 2-itemsets.</li>
+<li><b>Transaction reduction</b>: drop transactions with no frequent k-itemsets.</li>
+<li><b>Partitioning</b>: split DB into parts; a global frequent itemset must be frequent in at least one partition (2 scans).</li>
+<li><b>Sampling</b>: mine a random sample with lower support.</li>
+<li><b>Dynamic itemset counting</b>: add new candidates while scanning.</li>
+<li><b>FP-growth</b>: builds a compact <b>FP-tree</b> and mines it by pattern growth, without candidate generation. Only 2 DB scans.</li>
+</ul>
+</div>
+
+<div class="topic">
+<h3>4.3 Mining Multilevel Association Rules</h3>
+<p>Items have concept hierarchies (food → bread → wheat bread). Strong rules at the low level are rare, so we mine at <b>multiple levels</b>.</p>
+<ul>
+<li><b>Uniform minimum support</b>: same threshold at all levels – simple, but may miss low-level rules or give too many high-level rules.</li>
+<li><b>Reduced minimum support</b>: lower threshold at lower levels (common approach).</li>
+<li><b>Group-based support</b>: special thresholds for important item groups.</li>
+</ul>
+<p><b>Search strategies</b>: level-by-level independent, level-cross filtering by single item, or by k-itemset. <b>Redundant rules</b> (a rule that can be derived from an ancestor rule) are removed.</p>
+</div>
+
+<div class="topic">
+<h3>4.4 Mining Multidimensional Association Rules from Relational Databases and Data Warehouses</h3>
+<p>Involves two or more predicates/dimensions, e.g. <code>age(X, "20..29") ∧ occupation(X, "student") ⇒ buys(X, "laptop")</code>.</p>
+<ul>
+<li><b>Inter-dimensional</b> rules: no repeated predicates. <b>Hybrid-dimensional</b>: some predicates repeat (age ∧ buys ⇒ buys).</li>
+<li>Attributes may be <b>categorical</b> or <b>quantitative</b>. Quantitative attributes are handled by:
+<ol>
+<li><i>Static discretization</i> using predefined hierarchies before mining.</li>
+<li><i>Dynamic discretization</i> – <b>quantitative association rules</b> where ranges are formed during mining (e.g. ARCS clustering of rules).</li>
+<li><i>Distance-based</i> – groups values by closeness.</li></ol></li>
+<li>A data cube can store counts and make mining quicker.</li>
+</ul>
+</div>
+
+<div class="topic">
+<h3>4.5 From Association Mining to Correlation Analysis</h3>
+<p>High support and confidence do not always mean a useful rule. Example: 60% of people buy a game, 75% buy a video, 40% buy both. Rule <code>game ⇒ video</code> has confidence 40/60 = 66%, which looks strong, but the video's base rate (75%) is higher, so buying a game actually <i>reduces</i> the chance of a video. So we need correlation measures.</p>
+<ul>
+<li><b>Lift</b> = P(A ∪ B) / (P(A) × P(B)).<br>Lift &gt; 1 → positive correlation; = 1 → independent; &lt; 1 → negative correlation. (In the example: 0.40/(0.60×0.75) = 0.89 &lt; 1.)</li>
+<li><b>χ² (chi-square)</b> test of independence.</li>
+<li>Other measures: all_confidence, cosine measure.</li>
+</ul>
+<p>Rules are therefore written as <code>A ⇒ B [support, confidence, correlation]</code>.</p>
+</div>
+
+<div class="topic">
+<h3>4.6 Constraint-Based Association Mining</h3>
+<p>Instead of finding all rules, the user gives <b>constraints</b> so that only interesting rules are mined, faster.</p>
+<h4>Types of constraints</h4>
+<ul>
+<li><b>Knowledge-type</b>: what to mine (association or correlation).</li>
+<li><b>Data constraints</b>: which data (e.g. sales in Bihar in 2025).</li>
+<li><b>Dimension/level constraints</b>: which dimensions, what concept levels.</li>
+<li><b>Interestingness constraints</b>: thresholds on support, confidence, lift.</li>
+<li><b>Rule constraints</b>: form of rules, e.g. metarules (templates like <code>P1(X) ∧ P2(Y) ⇒ buys(X, ?)</code>) or aggregate constraints (sum(price) &lt; 100).</li>
+</ul>
+<h4>Property types</h4>
+<ul>
+<li><b>Anti-monotonic</b>: if an itemset violates it, so do all its supersets → prune early (e.g. sum(price) ≤ 100 with non-negative prices).</li>
+<li><b>Monotonic</b>: if an itemset satisfies it, so do all its supersets (no need to re-check).</li>
+<li><b>Succinct</b>: satisfying sets can be generated directly.</li>
+<li><b>Convertible</b>: become anti-monotonic or monotonic when items are ordered suitably (e.g. avg()).</li>
+</ul>
+</div>
+</section>
+
+<!-- ================= UNIT V ================= -->
+<section class="unit" id="u5">
+<h2>Unit V – Classification, Prediction and Cluster Analysis</h2>
+
+<div class="topic">
+<h3>5.1 Issues Regarding Classification and Prediction</h3>
+<p><b>Classification</b> predicts categorical class labels (safe/risky). <b>Prediction</b> predicts continuous values (salary). Both are two-step processes: (1) <b>learning/training step</b> builds the model from training data with known labels (supervised learning); (2) <b>classification step</b> tests the model on test data, then uses it for new data.</p>
+<h4>Data preparation</h4>
+<ul>
+<li>Data cleaning (noise, missing values), relevance analysis (remove useless attributes), data transformation (generalisation, normalisation).</li>
+</ul>
+<h4>Comparing methods</h4>
+<p>Accuracy, speed, robustness (noisy/missing data), scalability, interpretability (how easy to understand).</p>
+</div>
+
+<div class="topic">
+<h3>5.2 Classification by Decision Tree Induction</h3>
+<p>A <b>decision tree</b> is a flowchart-like tree: <i>internal node</i> = test on an attribute, <i>branch</i> = outcome of test, <i>leaf</i> = class label. Easy to read and turn into IF-THEN rules.</p>
+<h4>Basic algorithm (ID3 / C4.5 / CART)</h4>
+<ol>
+<li>Start with all training tuples at the root.</li>
+<li>If all tuples have the same class, make a leaf.</li>
+<li>Otherwise choose the best splitting attribute using an <b>attribute selection measure</b>.</li>
+<li>Create a branch for each outcome and partition the tuples.</li>
+<li>Repeat recursively. Stop when all tuples are in one class, no attributes remain (use majority voting), or no tuples are left.</li>
+</ol>
+<h4>Attribute selection measures</h4>
+<ul>
+<li><b>Information gain (ID3)</b>: <code>Info(D) = −Σ pᵢ log₂ pᵢ</code>; <code>Info_A(D) = Σ (|Dⱼ|/|D|) × Info(Dⱼ)</code>; <code>Gain(A) = Info(D) − Info_A(D)</code>. Choose highest gain. Biased towards attributes with many values.</li>
+<li><b>Gain ratio (C4.5)</b>: Gain / SplitInfo – reduces that bias.</li>
+<li><b>Gini index (CART)</b>: <code>Gini(D) = 1 − Σ pᵢ²</code>; choose split with the lowest Gini.</li>
+</ul>
+<h4>Tree pruning</h4>
+<p>Overfitting happens when the tree fits noise. <b>Prepruning</b> stops building early; <b>postpruning</b> removes branches from a full tree (cost-complexity, pessimistic pruning). Also used: handling continuous attributes by split points, scalable methods like RainForest and BOAT.</p>
+</div>
+
+<div class="topic">
+<h3>5.3 Bayesian Classification</h3>
+<p>A statistical classifier that predicts the probability that a tuple belongs to a class, based on <b>Bayes' theorem</b>:</p>
+<p><code>P(H | X) = P(X | H) × P(H) / P(X)</code></p>
+<p>H = hypothesis (tuple X is in class C), P(H|X) = <i>posterior</i>, P(H) = <i>prior</i>, P(X|H) = <i>likelihood</i>.</p>
+<h4>Naïve Bayesian classifier</h4>
+<ol>
+<li>Compute P(Cᵢ) for each class = (tuples in Cᵢ)/(total).</li>
+<li>Since P(X) is the same for all classes, maximise P(X|Cᵢ)P(Cᵢ).</li>
+<li>Assume <b>class conditional independence</b> (attributes do not depend on each other): <code>P(X|Cᵢ) = Π P(xₖ|Cᵢ)</code>.</li>
+<li>Predict class with the highest value.</li>
+</ol>
+<p>If some probability is 0, use the <b>Laplacian correction</b> (add 1 to each count). Advantages: simple, fast, good accuracy. Weakness: independence assumption is often untrue. For dependencies we use <b>Bayesian belief networks</b> (a directed acyclic graph with conditional probability tables).</p>
+</div>
+
+<div class="topic">
+<h3>5.4 Classification by Backpropagation</h3>
+<p><b>Backpropagation</b> is a neural-network learning algorithm. A <b>multilayer feed-forward network</b> has an <i>input layer</i>, one or more <i>hidden layers</i> and an <i>output layer</i>. Each connection has a <b>weight</b>; each unit has a <b>bias</b>.</p>
+<h4>Steps</h4>
+<ol>
+<li><b>Initialise</b> weights and biases with small random values.</li>
+<li><b>Forward pass</b>: input is propagated; each unit computes <code>I = Σ wᵢⱼOᵢ + θⱼ</code> and output <code>O = 1/(1 + e<sup>−I</sup>)</code> (sigmoid).</li>
+<li><b>Backward pass</b>: compute error. Output unit: <code>Err = O(1−O)(T−O)</code>. Hidden unit: <code>Err = O(1−O) Σ Errₖwⱼₖ</code>.</li>
+<li><b>Update</b> weights: <code>w = w + (l)·Err·O</code> and biases (l = learning rate).</li>
+<li>Repeat for all tuples (epochs) until error is small or weights converge.</li>
+</ol>
+<p>Pros: high tolerance to noisy data, works with continuous inputs. Cons: long training time, poor interpretability, needs parameters like network topology. <i>Rule extraction</i> and <i>network pruning</i> help make networks readable.</p>
+</div>
+
+<div class="topic">
+<h3>5.5 Classification Based on Concepts from Association Rule Mining</h3>
+<p>Uses association rules for classification, with the class label on the right side (<b>class association rules</b>).</p>
+<ul>
+<li><b>CBA</b> (Classification Based on Associations): mines class association rules, sorts them by confidence/support and builds a classifier.</li>
+<li><b>CMAR</b>: uses FP-tree and multiple rules with weighted χ² for prediction.</li>
+<li><b>CPAR</b>: based on FOIL, generates rules directly, faster.</li>
+</ul>
+<p>These often give better accuracy than decision trees as they search globally for combinations of attributes.</p>
+</div>
+
+<div class="topic">
+<h3>5.6 Other Classification Methods</h3>
+<ul>
+<li><b>k-Nearest Neighbour (lazy learner)</b>: store all training tuples; for a new tuple find the k closest (Euclidean distance) and assign majority class. No model-building, but slow when classifying.</li>
+<li><b>Case-based reasoning</b>: stores past cases as complex descriptions and finds similar cases to solve new problems.</li>
+<li><b>Genetic algorithms</b>: rules are encoded as bit strings; survival of the fittest through <i>crossover</i> and <i>mutation</i> produces better rules.</li>
+<li><b>Rough set approach</b>: approximates classes using lower and upper approximations; good for discarding redundant attributes.</li>
+<li><b>Fuzzy set approach</b>: gives degrees of membership (0 to 1), e.g. income 48,000 is "0.6 medium and 0.4 high".</li>
+</ul>
+</div>
+
+<div class="topic">
+<h3>5.7 Prediction</h3>
+<p>Prediction of <b>numeric values</b> is done by <b>regression</b>.</p>
+<ul>
+<li><b>Linear regression</b>: <code>y = w₀ + w₁x</code>. Weights by least squares: <code>w₁ = Σ(xᵢ−x̄)(yᵢ−ȳ) / Σ(xᵢ−x̄)²</code>, <code>w₀ = ȳ − w₁x̄</code>.</li>
+<li><b>Multiple regression</b>: <code>y = w₀ + w₁x₁ + w₂x₂ + …</code></li>
+<li><b>Nonlinear / polynomial regression</b>: transform to a linear form (e.g. y = w₀ + w₁x + w₂x²).</li>
+<li><b>Generalised linear models</b>: logistic regression (predicts probability of a class), Poisson regression.</li>
+<li>Other predictors: regression trees, model trees, neural networks.</li>
+</ul>
+</div>
+
+<div class="topic">
+<h3>5.8 Classifier Accuracy</h3>
+<p><b>Confusion matrix</b> (for class "positive"): TP, TN, FP, FN.</p>
+<ul>
+<li><b>Accuracy</b> = (TP + TN)/(P + N); <b>Error rate</b> = 1 − accuracy.</li>
+<li><b>Sensitivity (recall)</b> = TP/P; <b>Specificity</b> = TN/N; <b>Precision</b> = TP/(TP+FP).</li>
+</ul>
+<h4>Estimating accuracy</h4>
+<ul>
+<li><b>Holdout</b>: e.g. 2/3 for training, 1/3 for testing. <b>Random subsampling</b>: repeat holdout k times.</li>
+<li><b>k-fold cross-validation</b>: split into k parts; train on k−1, test on 1; repeat k times; average. <b>Leave-one-out</b> for small data; <b>stratified</b> keeps class proportions.</li>
+<li><b>Bootstrap</b>: sample with replacement; about 63.2% tuples chosen for training, rest for testing.</li>
+</ul>
+<p><b>Improving accuracy</b>: ensemble methods – <b>bagging</b> (vote of classifiers on bootstrap samples) and <b>boosting</b> (AdaBoost: misclassified tuples get higher weight in the next round). Use <b>ROC curves</b> and compare models with significance tests.</p>
+</div>
+
+<div class="topic">
+<h3>5.9 Cluster Analysis – Introduction</h3>
+<p><b>Clustering</b> groups data objects into clusters so that objects within a cluster are highly similar and different from objects in other clusters. It is <b>unsupervised</b> (no predefined classes). Applications: customer segmentation, image recognition, document grouping, biology, fraud detection.</p>
+<h4>Requirements of good clustering</h4>
+<p>Scalability, ability to handle different attribute types, discovering arbitrary-shaped clusters, minimal input parameters, handling noise and outliers, insensitivity to input order, high dimensionality, interpretability.</p>
+</div>
+
+<div class="topic">
+<h3>5.10 Types of Data in Cluster Analysis</h3>
+<ul>
+<li><b>Data matrix</b>: n objects × p variables (object-by-variable).</li>
+<li><b>Dissimilarity matrix</b>: n × n table of distances d(i, j); d(i,i) = 0 and d(i,j) = d(j,i).</li>
+<li><b>Interval-scaled variables</b>: continuous measurements. Standardise first (z-score using mean absolute deviation). Distances: <b>Euclidean</b> <code>√Σ(xᵢₖ−xⱼₖ)²</code>, <b>Manhattan</b> <code>Σ|xᵢₖ−xⱼₖ|</code>, <b>Minkowski</b> (generalisation with power q).</li>
+<li><b>Binary variables</b>: symmetric (both values equal importance) or asymmetric. Dissimilarity: <code>(r+s)/(q+r+s+t)</code> symmetric; Jaccard <code>(r+s)/(q+r+s)</code> asymmetric.</li>
+<li><b>Nominal (categorical)</b>: <code>d = (p − m)/p</code>, where m = matches.</li>
+<li><b>Ordinal</b>: replace rank by zᵢ = (rank−1)/(M−1), then treat as interval-scaled.</li>
+<li><b>Ratio-scaled</b>: apply logarithm or treat as continuous.</li>
+<li><b>Mixed types</b>: combine all with a weighted formula.</li>
+</ul>
+</div>
+
+<div class="topic">
+<h3>5.11 A Categorization of Major Clustering Methods</h3>
+<table><tr><th>Method</th><th>Idea</th><th>Examples</th></tr>
+<tr><td>Partitioning</td><td>Divide into k groups</td><td>k-means, k-medoids</td></tr>
+<tr><td>Hierarchical</td><td>Build a tree of clusters (agglomerative = bottom-up, divisive = top-down)</td><td>AGNES, DIANA, BIRCH, CURE, Chameleon</td></tr>
+<tr><td>Density-based</td><td>Grow dense regions</td><td>DBSCAN, OPTICS, DENCLUE</td></tr>
+<tr><td>Grid-based</td><td>Quantise space into grid cells</td><td>STING, WaveCluster, CLIQUE</td></tr>
+<tr><td>Model-based</td><td>Fit data to a mathematical model</td><td>EM, COBWEB, SOM</td></tr></table>
+</div>
+
+<div class="topic">
+<h3>5.12 Partitioning Methods</h3>
+<p>Given n objects, construct k partitions (k ≤ n); each cluster has at least one object, each object in one cluster.</p>
+<h4>k-Means (centroid-based)</h4>
+<ol>
+<li>Choose k objects as initial cluster centres.</li>
+<li>Assign each object to the nearest centre (mean).</li>
+<li>Recompute the mean of each cluster.</li>
+<li>Repeat 2–3 until no change.</li>
+</ol>
+<p>Objective: minimise <code>E = Σ Σ |p − mᵢ|²</code>. <i>Example:</i> points 2, 4, 10, 12, 3, 20, 30, 11, 25 with k=2 and initial centres 2 and 4 converge to clusters {2,3,4,10,11,12} and {20,25,30}.<br>Pros: simple, fast O(nkt). Cons: need k in advance; sensitive to outliers; only spherical clusters; local optimum.</p>
+<h4>k-Medoids (PAM)</h4>
+<p>Uses an actual object (<b>medoid</b>, most central) as the cluster representative instead of a mean, so it is less affected by outliers. PAM swaps a medoid with a non-medoid if cost reduces. Costly for large data; <b>CLARA</b> (uses samples) and <b>CLARANS</b> (randomised search) scale better.</p>
+</div>
+
+<div class="topic">
+<h3>5.13 Density-Based Methods</h3>
+<p>Clusters are dense regions separated by low-density regions; can find arbitrary shapes and handle noise.</p>
+<h4>DBSCAN</h4>
+<ul>
+<li><b>ε (eps)</b>: radius of neighbourhood. <b>MinPts</b>: minimum points in ε-neighbourhood.</li>
+<li><b>Core object</b>: has ≥ MinPts points within ε. <b>Border point</b>: within ε of a core object but not core itself. <b>Noise</b>: neither.</li>
+<li><b>Directly density-reachable</b>, <b>density-reachable</b> (chain of core objects), <b>density-connected</b> (both reachable from a common object).</li>
+</ul>
+<p>Algorithm: pick an unvisited point; if it is a core object, form a cluster and keep adding all density-reachable points; else mark as noise. Complexity O(n log n) with spatial index. <b>OPTICS</b> gives a cluster ordering for many ε values; <b>DENCLUE</b> uses density functions (influence of each point) and hill-climbing.</p>
+</div>
+
+<div class="topic">
+<h3>5.14 Grid-Based Methods</h3>
+<p>Divide space into a finite number of cells forming a grid; clustering is done on cells, so time depends on the number of cells, not data objects – very fast.</p>
+<ul>
+<li><b>STING</b>: hierarchical rectangular cells at different resolutions, with statistics (count, mean, std, min, max, distribution) stored; queries answered top-down.</li>
+<li><b>WaveCluster</b>: applies wavelet transform to the grid to find dense regions; handles noise well.</li>
+<li><b>CLIQUE</b>: grid- and density-based; finds clusters in subspaces of high-dimensional data using the Apriori-like principle.</li>
+</ul>
+</div>
+
+<div class="topic">
+<h3>5.15 Model-Based Clustering Methods</h3>
+<p>Assume a mathematical model for each cluster and find the best fit.</p>
+<ul>
+<li><b>EM (Expectation-Maximization)</b>: each object belongs to clusters with probabilities (mixture of Gaussians). E-step: compute membership probabilities; M-step: re-estimate parameters; repeat until convergence. An extension of k-means.</li>
+<li><b>COBWEB</b>: conceptual clustering that builds a classification tree incrementally using <i>category utility</i>.</li>
+<li><b>SOM (Self-Organising Maps)</b>: neural network that maps high-dimensional data onto a 2-D grid of neurons, keeping similar objects near each other.</li>
+</ul>
+</div>
+
+<div class="topic">
+<h3>5.16 Outlier Analysis</h3>
+<p>An <b>outlier</b> is a data object that is inconsistent with the rest of the data. One person's noise is another's signal: used in fraud detection, intrusion detection, medical analysis.</p>
+<h4>Methods</h4>
+<ul>
+<li><b>Statistical (distribution-based)</b>: assume a distribution (e.g. normal) and flag objects with very low probability; uses discordancy tests. Drawback: distribution is often unknown.</li>
+<li><b>Distance-based</b>: an object O is a DB(p, D)-outlier if at least fraction p of objects are farther than D from it. Algorithms: index-based, nested-loop, cell-based.</li>
+<li><b>Density-based local outliers</b>: uses the <b>Local Outlier Factor (LOF)</b>; compares local density with neighbours' density – finds outliers in regions of varying density.</li>
+<li><b>Deviation-based</b>: identifies objects that deviate from the main characteristics of a group (sequential exception technique, OLAP data-cube approach).</li>
+</ul>
+</div>
+</section>
+
+</main>
+<footer>End of notes. Revise unit by unit, and practise the numerical examples (Apriori, k-means, normalization, information gain).</footer>
+</body>
+</html>
