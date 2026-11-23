@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BIT-353 Cyber Law and Internet Security: Study Guide</title>
+<style>
+:root{--paper:#f4f6fa;--panel:#fff;--ink:#15233b;--muted:#54627a;--line:#d8dfea;--mark:#ffe14d;--link:#1a4bd0;--code:#0f1b2d;--codeink:#e4ebf7;--teach:#0d6e65;--teachb:#e2f3f0;--exam:#1a4bd0;--examb:#e5ecff;--old:#b53c32;--oldb:#fdebe8;--tip:#9a6500;--tipb:#fff4ca;--nav:#0b1630;--u1:#0d6e65;--u2:#1a4bd0;--u3:#8a4ab7;--u4:#b34a00;--u5:#9b2f77}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0d1420;--panel:#141d2d;--ink:#e5ebf5;--muted:#9aa9c0;--line:#26324a;--link:#7fa6ff;--teach:#5fd4c4;--teachb:#10302c;--exam:#8fb0ff;--examb:#15254a;--old:#ff9088;--oldb:#38201e;--tip:#ffd166;--tipb:#382e12;--nav:#080e1a}}
+:root[data-theme="dark"]{--paper:#0d1420;--panel:#141d2d;--ink:#e5ebf5;--muted:#9aa9c0;--line:#26324a;--link:#7fa6ff;--teach:#5fd4c4;--teachb:#10302c;--exam:#8fb0ff;--examb:#15254a;--old:#ff9088;--oldb:#38201e;--tip:#ffd166;--tipb:#382e12;--nav:#080e1a}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px;height:auto}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.7 Georgia,"Times New Roman",serif}
+a{color:var(--link)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--nav);display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding:8px 14px;font:600 14px system-ui,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--nav);z-index:10}
+nav a{color:#dbe4f3;text-decoration:none;padding:4px 10px;border-radius:6px;border-bottom:3px solid var(--c)}nav a:hover{background:#18273e}
+nav button{margin-left:auto;font:inherit;background:none;color:#dbe4f3;border:1px solid #33456a;border-radius:6px;padding:4px 10px;cursor:pointer}
+.wrap{max-width:820px;margin:0 auto;padding:0 18px 70px}
+h1,h2,h3,h4{font-family:system-ui,sans-serif;line-height:1.2}
+.hero{padding:44px 0 10px}.hero h1{font-size:clamp(32px,5vw,52px);margin:0 0 12px;letter-spacing:-.02em}.lead{color:var(--muted);font-size:19px}
+.unit{margin-top:50px;border-top:8px solid var(--u)}.unit>h2{font-size:clamp(28px,4vw,40px);margin:18px 0 6px}.no{font:700 16px system-ui;color:var(--u)}.cov{color:var(--muted);margin:0}
+.topic{margin-top:34px}.topic>h3{font-size:24px;margin:0 0 10px;padding-left:12px;border-left:6px solid var(--u)}h4{font-size:18px;margin:22px 0 6px}
+p{margin:0 0 13px}ul,ol{padding-left:24px;margin:0 0 13px}li{margin-bottom:5px}
+mark{background:linear-gradient(transparent 55%,var(--mark) 55%);color:inherit;padding:0 2px}
+code{font:.86em ui-monospace,Consolas,monospace;background:rgba(120,140,180,.18);padding:1px 6px;border-radius:5px}
+.note{border-left:5px solid var(--nc);background:var(--nb);border-radius:0 8px 8px 0;padding:12px 16px 3px;margin:16px 0}.note b.nt{display:block;font:700 16px system-ui;color:var(--nc);margin-bottom:6px}
+.teach{--nc:var(--teach);--nb:var(--teachb)}.exam{--nc:var(--exam);--nb:var(--examb)}.old{--nc:var(--old);--nb:var(--oldb)}.tip{--nc:var(--tip);--nb:var(--tipb)}
+.tw{overflow-x:auto;margin:14px 0}table{border-collapse:collapse;width:100%;background:var(--panel);font-size:15.5px;line-height:1.5}th,td{border:1px solid var(--line);padding:8px 12px;text-align:left}
+th{background:var(--nb)}
+pre{background:var(--code);color:var(--codeink);padding:14px 16px;border-radius:10px;overflow-x:auto;font:14px/1.6 ui-monospace,Consolas,monospace;margin:14px 0}
+.flow{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:14px 0}.flow li{flex:1 1 130px;background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--u);border-radius:8px;padding:10px}
+.flow b{display:block;font:700 15px system-ui}
+details{background:var(--panel);border:1px solid var(--line);border-radius:8px;margin:8px 0}summary{cursor:pointer;padding:11px 16px;font:700 16.5px/1.35 system-ui}details[open] summary{border-bottom:1px solid var(--line)}.ans{padding:10px 16px 1px}
+.check{list-style:none;padding:0}.check label{display:flex;gap:10px;padding:5px 4px;cursor:pointer}.check input{margin-top:7px;width:18px;height:18px;accent-color:var(--u);flex:none}.check input:checked+span{text-decoration:line-through;color:var(--muted)}
+footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted)}
+@media print{nav{display:none}.unit{break-before:page}}
+</style></head><body>
+<nav aria-label="Units"><a href="#unit1" style="--c:var(--u1)">I</a><a href="#unit2" style="--c:var(--u2)">II</a><a href="#unit3" style="--c:var(--u3)">III</a><a href="#unit4" style="--c:var(--u4)">IV</a><a href="#unit5" style="--c:var(--u5)">V</a><button id="tb" type="button">Dark mode</button></nav>
+<div class="wrap">
+<header class="hero"><h1>Cyber Law and Internet Security, explained simply</h1>
+<p class="lead">BIT-353 (4 credits). Every unit in plain words: what it is, how to picture it, what to write in the exam, and what is out of date. Tap a question to reveal its answer. Ticks are saved on this device.</p>
+<div class="note teach"><b class="nt">Think of it like this</b><p>Cyber security is the <mark>lock</mark> (firewalls, encryption). Cyber law is the <mark>rulebook</mark> (what counts as a crime, what evidence counts, who is liable).</p></div>
+<div class="note exam"><b class="nt">Exam answer</b><p>Short definitions you can write as they are.</p></div>
+<div class="note old"><b class="nt">Outdated or replaced</b><p>In the syllabus, but know what changed.</p></div>
+<div class="note tip"><b class="nt">Remember</b><p>Common mistakes and traps.</p></div></header>
+
+<section class="unit" id="unit1" style="--u:var(--u1)"><div class="no">Unit I</div><h2>E-Commerce</h2>
+<p class="cov">Basic of e-commerce, types, benefits, advantages and disadvantages, impact on business, network infrastructure (Internet, Intranet), issues, problems and prospects, network access equipment, broadband and telecommunication.</p>
+<div class="topic"><h3>Basics, types and benefits</h3>
+<p><mark>E-commerce</mark> is buying and selling goods or services over electronic networks, mainly the internet, including online payment and delivery tracking. It is one part of <b>e-business</b>, which also includes internal processes such as inventory management and supplier coordination.</p>
+<div class="tw"><table><tr><th>Type</th><th>Between</th><th>Example</th></tr>
+<tr><td>B2C</td><td>Business and Consumer</td><td>Amazon, Flipkart</td></tr><tr><td>B2B</td><td>Business and Business</td><td>IndiaMART, Alibaba</td></tr>
+<tr><td>C2C</td><td>Consumer and Consumer</td><td>OLX</td></tr><tr><td>C2B</td><td>Consumer to Business</td><td>Freelancer selling services</td></tr>
+<tr><td>B2G / G2C</td><td>Business or citizen with Government</td><td>GeM portal, online tax filing</td></tr></table></div>
+<div class="tw"><table><tr><th>Advantages / benefits</th><th>Disadvantages</th></tr>
+<tr><td>Open 24x7, global reach, no shop rent, wide choice, easy price comparison, lower cost, faster transactions</td><td>Cannot touch the product, payment fraud and identity theft, privacy risk, delivery delays, customer-service dependence</td></tr></table></div>
+<p><b>Impact on business:</b> new business models (marketplaces, subscriptions), lower inventory and middleman costs, direct customer data and personalised offers, stronger competition, new risks (cyber security and system downtime).</p>
+<div class="topic"><h3>Network infrastructure: Internet and Intranet</h3>
+<div class="tw"><table><tr><th>Term</th><th>Meaning</th><th>Use in e-commerce</th></tr>
+<tr><td>Internet</td><td>Public global network of networks using TCP/IP</td><td>Storefronts, payments, customers</td></tr>
+<tr><td>Intranet</td><td>Private network of one organisation using internet technology</td><td>Internal stock, HR and order systems</td></tr>
+<tr><td>Extranet</td><td>Intranet opened to selected partners</td><td>Suppliers and distributors</td></tr></table></div>
+<ul class="flow"><li><b>Customer</b>Browser or app</li><li><b>Internet</b>ISP, routers</li><li><b>Web server</b>Catalogue, cart</li><li><b>Payment gateway</b>Bank, UPI, card network</li><li><b>Intranet</b>Internal inventory and fulfilment</li></ul></div>
+<div class="topic"><h3>Issues, problems and prospects</h3>
+<ul><li><b>Issues:</b> security of payments, privacy of customer data, authentication of buyer and seller, legal validity of online contracts, taxation, consumer protection, jurisdiction across borders.</li>
+<li><b>Problems:</b> poor connectivity in rural areas, low digital literacy, fear of fraud, logistics cost, cash-on-delivery habits.</li>
+<li><b>Prospects:</b> UPI and digital payments, cheap 4G/5G data, Digital India, ONDC, growth of tier-2 and tier-3 cities, m-commerce (shopping by phone).</li></ul></div>
+<div class="topic"><h3>Network access equipment, broadband and telecommunication</h3>
+<div class="tw"><table><tr><th>Device</th><th>Job</th></tr>
+<tr><td>Modem</td><td>Converts digital data to signals for a phone, cable or fibre line and back</td></tr>
+<tr><td>Router</td><td>Forwards packets between networks, connects home or office to the ISP</td></tr>
+<tr><td>Switch / Hub</td><td>Connects devices in one LAN (a switch sends only to the target device)</td></tr>
+<tr><td>NIC, Wi-Fi access point</td><td>Network card in a device; wireless entry point</td></tr>
+<tr><td>Gateway</td><td>Joins networks that use different protocols</td></tr></table></div>
+<p><mark>Broadband</mark> is always-on, high-speed internet (DSL, cable, fibre FTTH, 4G/5G, satellite). It replaced dial-up and made streaming, video calls and online payments practical.</p>
+<div class="note tip"><b class="nt">Remember</b><p>Say Internet is the infrastructure, e-commerce is one use of it, and Intranet is private. Examiners like the three-way contrast.</p></div></div>
+<div class="topic"><h3>How an online purchase works</h3>
+<ul class="flow"><li><b>1. Browse</b>Customer searches the catalogue</li><li><b>2. Cart</b>Items and charges are added</li><li><b>3. Checkout</b>Login and address</li><li><b>4. Payment</b>Gateway and bank approve it</li><li><b>5. Confirmation</b>Order is recorded</li><li><b>6. Fulfilment</b>Packing and delivery</li></ul>
+<p>Typical architecture: a <b>front end</b>, a <b>business/application layer</b>, a <b>database</b>, and external <b>payment, delivery and notification</b> systems.</p></div>
+<div class="topic"><h3>Electronic payment systems</h3>
+<p>An <mark>electronic payment system</mark> moves money without cash or cheques. Parties include the customer, merchant, issuing bank, acquiring bank and payment gateway.</p>
+<div class="tw"><table><tr><th>Method</th><th>How it works</th><th>Notes</th></tr>
+<tr><td>Credit card</td><td>Pay now, bank bills you later</td><td>Interest if unpaid; chargeback rights</td></tr><tr><td>Debit card</td><td>Money leaves your account at once</td><td>PIN or OTP needed</td></tr>
+<tr><td>Net banking</td><td>Log in to bank site and transfer</td><td>NEFT, RTGS or IMPS</td></tr><tr><td>UPI</td><td>Instant bank-to-bank transfer using a VPA</td><td>NPCI; 24x7; PIN based</td></tr>
+<tr><td>Wallet</td><td>Prepaid balance</td><td>RBI PPI rules and limits</td></tr><tr><td>Cash on delivery</td><td>Pay courier at the door</td><td>Costly for sellers</td></tr></table></div>
+<p><b>Security:</b> HTTPS, PCI-DSS, card tokenisation, 2-factor authentication, fraud monitoring and 3-D Secure.</p></div>
+<div class="topic"><h3>Likely questions and checklist</h3>
+<details><summary>Explain the steps of an online transaction.</summary><div class="ans"><p>Browse, add to cart, checkout, payment via gateway and bank authorisation, order confirmation, fulfilment and after-sales support.</p></div></details>
+<details><summary>Explain electronic payment methods.</summary><div class="ans"><p>Cards, net banking, UPI, wallets, COD and e-cash; secured with HTTPS, tokenisation, OTP and PCI-DSS.</p></div></details>
+<details><summary>Differentiate Internet and Intranet.</summary><div class="ans"><p>The Internet is public and global; an Intranet is private to one organisation and accessible mainly to its members.</p></div></details>
+<ul class="check"><li><label><input type="checkbox" data-k="1-1"><span>I can list five types of e-commerce with examples</span></label></li><li><label><input type="checkbox" data-k="1-2"><span>I can compare Internet and Intranet</span></label></li></ul></div>
+</section>
+
+<section class="unit" id="unit2" style="--u:var(--u2)"><div class="no">Unit II</div><h2>Web security and firewalls</h2>
+<p class="cov">Security issues on web, importance of firewall, components of firewall, transaction security, emerging client-server, security threats, network security, factors in firewall design, limitations of firewalls.</p>
+<div class="topic"><h3>Security issues on the web</h3>
+<p>Three goals matter, called the <mark>CIA triad</mark>: <b>Confidentiality</b>, <b>Integrity</b>, and <b>Availability</b>.</p>
+<ul><li><b>Client side:</b> malicious scripts, cookie theft, phishing, malware downloads.</li><li><b>Server side:</b> SQL injection, XSS, weak passwords, misconfiguration, DoS and DDoS.</li><li><b>Network side:</b> sniffing, spoofing and man-in-the-middle attacks.</li></ul></div>
+<div class="topic"><h3>Firewall: importance and components</h3>
+<p>A <mark>firewall</mark> is a barrier between a trusted network and an untrusted network. It checks traffic against rules and allows or blocks it.</p>
+<div class="tw"><table><tr><th>Component</th><th>Role</th></tr>
+<tr><td>Packet filter</td><td>Checks source/destination IP, port and protocol</td></tr><tr><td>Application gateway</td><td>Acts as a proxy and inspects application content</td></tr>
+<tr><td>Circuit-level gateway</td><td>Validates sessions and handshakes</td></tr><tr><td>Bastion host</td><td>Hardened computer that runs proxy services</td></tr>
+<tr><td>DMZ</td><td>Middle zone for public web and mail servers</td></tr></table></div>
+<h4>Types of firewall</h4>
+<ul><li><b>Packet filtering:</b> fast, simple, examines headers.</li><li><b>Stateful inspection:</b> remembers connection state.</li><li><b>Proxy/application firewall:</b> inspects application data.</li><li><b>Next-generation firewall:</b> combines stateful inspection, application awareness and intrusion prevention.</li></ul>
+<pre>ALLOW tcp LAN -> web port 443
+DENY  any  any -> any</pre></div>
+<div class="topic"><h3>Transaction security and threats</h3>
+<p>Online payment needs confidentiality, authenticity, integrity and non-repudiation. Tools include SSL/TLS, certificates, digital signatures, payment gateways, OTP/2FA and tokenisation.</p>
+<div class="tw"><table><tr><th>Threat</th><th>Meaning</th></tr>
+<tr><td>Spoofing</td><td>Faking an identity or IP address</td></tr><tr><td>Sniffing</td><td>Capturing data on the network</td></tr>
+<tr><td>Phishing</td><td>Fake pages or mails that steal credentials</td></tr><tr><td>DoS / DDoS</td><td>Flooding a server so real users cannot access it</td></tr>
+<tr><td>Man-in-the-middle</td><td>Secretly relaying and altering traffic</td></tr><tr><td>SQL injection</td><td>Inserting database commands into input fields</td></tr></table></div></div>
+<div class="topic"><h3>Firewall design and limitations</h3>
+<p>Design factors: security policy, network topology, DMZ placement, firewall type, performance, logging, maintenance and fail-safe behaviour. Prefer <mark>default deny</mark>.</p>
+<div class="note old"><b class="nt">Limitations</b><p>A firewall cannot stop insider attacks, phishing, social engineering, weak passwords or encrypted malware. It can only control traffic that passes through it.</p></div></div>
+<div class="topic"><h3>Likely questions</h3>
+<details><summary>What is a firewall? Explain its importance and components.</summary><div class="ans"><p>A system at the trusted/untrusted network boundary that filters traffic. Components include screening routers, application gateways, circuit gateways, bastion hosts, DMZ and logging.</p></div></details>
+<details><summary>State the limitations of firewalls.</summary><div class="ans"><p>No protection from insiders, bypass routes, social engineering or compromised hosts; effectiveness depends on correct rules and maintenance.</p></div></details>
+<ul class="check"><li><label><input type="checkbox" data-k="2-1"><span>I can explain the CIA triad</span></label></li><li><label><input type="checkbox" data-k="2-2"><span>I can name firewall types and components</span></label></li></ul></div>
+</section>
+
+<section class="unit" id="unit3" style="--u:var(--u3)"><div class="no">Unit III</div><h2>Encryption and digital signatures</h2>
+<p class="cov">Encryption techniques, symmetric keys and DES, triple DES, asymmetric encryption, secret key and public/private key encryption, digital signatures, VPN, technical and legal issues, electronic records and contracts.</p>
+<div class="topic"><h3>Encryption basics</h3>
+<p><mark>Encryption</mark> converts <b>plaintext</b> into <b>ciphertext</b> using an algorithm and key. <b>Decryption</b> reverses it. A substitution cipher replaces symbols; a transposition cipher rearranges symbols.</p></div>
+<div class="topic"><h3>Symmetric encryption: DES and Triple DES</h3>
+<p>The <b>same key</b> encrypts and decrypts. It is fast but requires safe key distribution.</p>
+<div class="tw"><table><tr><th></th><th>DES</th><th>Triple DES (3DES)</th><th>AES</th></tr>
+<tr><td>Block size</td><td>64 bits</td><td>64 bits</td><td>128 bits</td></tr><tr><td>Key</td><td>56 bits</td><td>112 or 168 bits</td><td>128, 192 or 256 bits</td></tr>
+<tr><td>Rounds</td><td>16</td><td>Three DES operations</td><td>10, 12 or 14</td></tr><tr><td>Status</td><td>Broken</td><td>Retired or being retired</td><td>Current standard</td></tr></table></div>
+<p><b>DES:</b> 64-bit blocks, 56-bit effective key and 16 Feistel rounds. <b>3DES:</b> commonly encrypt-decrypt-encrypt with two or three keys.</p>
+<div class="note old"><b class="nt">Outdated</b><p>DES and 3DES are replaced by <b>AES</b> in practice. Learn them for the exam.</p></div></div>
+<div class="topic"><h3>Asymmetric encryption</h3>
+<p>Each user has a <b>public key</b> shared openly and a <b>private key</b> kept secret. RSA uses the difficulty of factoring large primes.</p>
+<div class="tw"><table><tr><th></th><th>Symmetric</th><th>Asymmetric</th></tr>
+<tr><td>Keys</td><td>One shared key</td><td>Public/private pair</td></tr><tr><td>Speed</td><td>Fast</td><td>Slow</td></tr>
+<tr><td>Key sharing</td><td>Difficult</td><td>Easy</td></tr><tr><td>Examples</td><td>DES, 3DES, AES</td><td>RSA, ECC, Diffie-Hellman</td></tr></table></div>
+<p><b>RSA toy example:</b> p=3, q=11, n=33, phi=20, e=7, d=3. Public key=(7,33); private key=(3,33). Plaintext 4 encrypts to ciphertext 16 and decrypts to 4.</p>
+<p>HTTPS uses a <b>hybrid</b> system: asymmetric encryption establishes or protects a session key, then symmetric encryption protects the actual data.</p></div>
+<div class="topic"><h3>Digital signatures</h3>
+<p>A <mark>digital signature</mark> proves the sender's identity, integrity and non-repudiation. It does not itself encrypt the message.</p>
+<ul class="flow"><li><b>1. Hash</b>Generate SHA-256 digest</li><li><b>2. Sign</b>Encrypt digest with sender private key</li><li><b>3. Send</b>Message and signature</li><li><b>4. Verify</b>Receiver checks with sender public key</li></ul>
+<p>A <b>digital certificate</b> (X.509) issued by a Certifying Authority binds a public key to an identity.</p>
+<h4>Legal issues</h4>
+<ul><li><b>IT Act 2000, Sec 3/3A:</b> authentication using digital or electronic signatures.</li><li><b>Sec 4:</b> legal recognition of electronic records.</li><li><b>Sec 5:</b> legal recognition of digital signatures.</li><li><b>Sec 10A:</b> validity of electronic contracts.</li><li><b>Evidence:</b> electronic evidence is governed by the Bharatiya Sakshya Adhiniyam, 2023.</li></ul>
+<p>Digital contracts still require offer, acceptance, consideration, capacity and free consent.</p></div>
+<div class="topic"><h3>Virtual Private Network (VPN)</h3>
+<p>A <mark>VPN</mark> creates an encrypted tunnel across a public network. It provides confidentiality, integrity and remote or branch-office access. Common protocols include IPsec, SSL/TLS and WireGuard.</p></div>
+<div class="topic"><h3>Likely questions</h3>
+<details><summary>Explain symmetric and asymmetric encryption with differences.</summary><div class="ans"><p>Symmetric uses one shared key and is fast; asymmetric uses public/private pairs and is slower. Asymmetric solves key distribution and supports signatures.</p></div></details>
+<details><summary>Explain DES and Triple DES.</summary><div class="ans"><p>DES: 64-bit blocks, 56-bit key, 16 Feistel rounds. 3DES applies DES three times. Both are now superseded by AES.</p></div></details>
+<details><summary>What is a digital signature? How is it created and verified?</summary><div class="ans"><p>Hash the message, encrypt the digest with the sender private key, then verify the signature using the sender public key.</p></div></details>
+<ul class="check"><li><label><input type="checkbox" data-k="3-1"><span>I can explain DES rounds and why 3DES exists</span></label></li><li><label><input type="checkbox" data-k="3-2"><span>I can compare symmetric and asymmetric encryption</span></label></li></ul></div>
+</section>
+
+<section class="unit" id="unit4" style="--u:var(--u4)"><div class="no">Unit IV</div><h2>Cyber law and intellectual property</h2>
+<p class="cov">Jurisprudence of cyber law, object and scope of IT Act 2000, Indian cyber law, UNCITRAL Model Law, ISP guidelines, IPR issues and cyberspace, Indian perspective, patent, copyright, trademark and semiconductor layout.</p>
+<div class="topic"><h3>Jurisprudence and the IT Act 2000</h3>
+<p><b>Jurisprudence</b> is the philosophy and science of law. <b>Cyber law</b> regulates internet use, computers, electronic data and online conduct.</p>
+<p>The <mark>Information Technology Act, 2000</mark> came into force on 17 October 2000 and was substantially amended in 2008.</p>
+<h4>Object and scope</h4>
+<ul><li>Give legal recognition to electronic records and digital signatures.</li><li>Facilitate e-commerce, e-governance and electronic payments.</li><li>Define cyber offences and prescribe penalties.</li><li>Recognise intermediaries and establish a legal framework for electronic evidence.</li></ul>
+<div class="tw"><table><tr><th>Section</th><th>Subject</th></tr>
+<tr><td>43</td><td>Unauthorised access, data theft or damage: compensation</td></tr><tr><td>65</td><td>Tampering with computer source documents</td></tr>
+<tr><td>66</td><td>Computer-related offences based on dishonest or fraudulent acts</td></tr><tr><td>66C, 66D</td><td>Identity theft and cheating by personation</td></tr>
+<tr><td>66E, 66F</td><td>Privacy violation and cyber terrorism</td></tr><tr><td>67–67B</td><td>Obscene, sexually explicit and child sexual abuse material</td></tr>
+<tr><td>69</td><td>Government interception and monitoring powers</td></tr><tr><td>72</td><td>Breach of confidentiality and privacy</td></tr><tr><td>79</td><td>Intermediary safe harbour</td></tr></table></div>
+<div class="note old"><b class="nt">Struck down or replaced</b><p>Section 66A was struck down in <i>Shreya Singhal v Union of India</i> (2015). The Cyber Appellate Tribunal was replaced/merged under later law.</p></div></div>
+<div class="topic"><h3>UNCITRAL Model Law and ISP guidelines</h3>
+<p>The <mark>UNCITRAL Model Law on Electronic Commerce</mark> was adopted in 1996. It uses functional equivalence and technology neutrality so electronic records receive treatment similar to paper records.</p>
+<p>ISPs need a licence from the Department of Telecommunications. Typical duties include lawful interception, log retention for a notified period, subscriber verification and timely cooperation with authorities.</p></div>
+<div class="topic"><h3>Intellectual property and cyberspace</h3>
+<div class="tw"><table><tr><th>Right</th><th>Protects</th><th>Indian law</th><th>Term</th></tr>
+<tr><td>Patent</td><td>Novel, inventive, useful invention</td><td>Patents Act 1970</td><td>20 years</td></tr>
+<tr><td>Copyright</td><td>Original works, software, films</td><td>Copyright Act 1957</td><td>Author life + 60 years</td></tr>
+<tr><td>Trademark</td><td>Name or logo identifying goods or services</td><td>Trade Marks Act 1999</td><td>10 years, renewable</td></tr>
+<tr><td>Semiconductor layout</td><td>Integrated-circuit layout design</td><td>Semiconductor Integrated Circuits Layout-Design Act 2000</td><td>10 years</td></tr></table></div>
+<ul><li><b>Patent:</b> protects how an invention works. Mere algorithms and computer programs <i>per se</i> are not patentable under Section 3(k).</li>
+<li><b>Copyright:</b> protects expression, not an idea.</li><li><b>Trademark:</b> protects brand identity and prevents confusion.</li></ul>
+<div class="note tip"><b class="nt">Remember</b><p>Patent = how it works. Copyright = how it is written or drawn. Trademark = how it is named or branded.</p></div></div>
+<div class="topic"><h3>Likely questions</h3>
+<details><summary>Explain the object and scope of the IT Act 2000.</summary><div class="ans"><p>Legal recognition for e-records, signatures and e-commerce; e-governance; electronic payments; cyber offences and penalties; intermediary rules.</p></div></details>
+<details><summary>Write a note on the UNCITRAL Model Law.</summary><div class="ans"><p>Adopted in 1996 to harmonise e-commerce laws through functional equivalence, non-discrimination and technology neutrality.</p></div></details>
+<details><summary>Differentiate patent, copyright and trademark.</summary><div class="ans"><p>Patent protects inventions for up to 20 years; copyright protects original expression for life plus 60 years; trademarks protect brand identity for renewable 10-year periods.</p></div></details>
+<ul class="check"><li><label><input type="checkbox" data-k="4-1"><span>I know object, scope and key sections of the IT Act</span></label></li><li><label><input type="checkbox" data-k="4-2"><span>I can differentiate patent, copyright and trademark</span></label></li></ul></div>
+</section>
+
+<section class="unit" id="unit5" style="--u:var(--u5)"><div class="no">Unit V</div><h2>Cyber crime and internet security threats</h2>
+<p class="cov">Cyber crime, jurisdiction, evidence, treatment in different countries, ethical issues in data and software privacy, plagiarism, pornography, tampering, data privacy, domain names, software piracy, ethical hacking, biometrics.</p>
+<div class="topic"><h3>Cyber crime and jurisdiction</h3>
+<p><mark>Cyber crime</mark> is illegal conduct where a computer or network is the target, tool or place of the crime. It may be against persons, property, governments or the state.</p>
+<p><b>Cyber jurisdiction:</b> place of the offender, victim or affected system may be relevant, as may effects, server location and laws of involved countries.</p>
+<p><b>International comparison:</b> USA — CFAA; UK — Computer Misuse Act 1990; EU — GDPR and NIS rules; India — IT Act, BNS and data-protection law; Singapore — Computer Misuse Act.</p></div>
+<div class="topic"><h3>Cyber crime and evidence</h3>
+<p>Digital evidence includes logs, e-mails, chats, hard disks, CCTV and call records. Preserve it using chain of custody, write-blockers, hashes and forensic copies. Hashes prove that copies match originals.</p></div>
+<div class="topic"><h3>Ethical issues</h3>
+<ul><li><b>Data and software privacy:</b> collect and use personal data with consent and purpose limitation.</li><li><b>Plagiarism:</b> using another person's words, ideas or code and claiming them as one's own.</li><li><b>Pornography:</b> sexual content; distribution or possession may be illegal where prohibited, especially involving minors.</li><li><b>Tampering:</b> unauthorised alteration or deletion of data or systems.</li><li><b>Software piracy:</b> unauthorised copying or use of software.</li></ul></div>
+<div class="topic"><h3>Domain names and DNS</h3>
+<p>The Domain Name System maps names to IP addresses. <b>Cybersquatting</b> registers a famous name to exploit or sell it. UDRP provides a system for dispute resolution over domain names.</p></div>
+<div class="topic"><h3>Ethical hacking</h3>
+<p><mark>Ethical hacking</mark> is authorised penetration testing to find weaknesses before criminals do. <b>White hat</b> works with permission; <b>grey hat</b> has uncertain or limited authority; <b>black hat</b> acts maliciously or illegally.</p></div>
+<div class="topic"><h3>Internet security threats</h3>
+<div class="tw"><table><tr><th>Threat</th><th>Meaning</th></tr>
+<tr><td>Hacking</td><td>Unauthorised access to a system</td></tr><tr><td>Cracking</td><td>Breaking passwords or software protection</td></tr>
+<tr><td>Sneaking</td><td>Secret watching or entry</td></tr><tr><td>Virus</td><td>Code attached to a file; spreads when the file executes</td></tr>
+<tr><td>Worm</td><td>Self-spreading malware that needs no host file</td></tr>
+<tr><td>Trojan horse</td><td>Malware disguised as useful software</td></tr><tr><td>Logic bomb</td><td>Dormant code triggered by a condition or date</td></tr></table></div>
+<p><b>Defence:</b> updated antivirus, patches, firewall, backups, strong unique passwords with 2FA, least privilege and security awareness.</p>
+<div class="note tip"><b class="nt">Remember</b><p>Virus needs a host and usually a user action; worm spreads alone; Trojan tricks the user; logic bomb waits for a trigger.</p></div></div>
+<div class="topic"><h3>Biometric security</h3>
+<p><mark>Biometrics</mark> identify a person by fingerprint, face, iris, voice or behaviour. Enrolment creates a template; later input is matched with that template.</p>
+<ul><li><b>Challenges:</b> false accept/reject errors, spoofing, worn or dirty sensors, and irreversible identity data if a template leaks.</li><li>Use liveness detection, encryption, template protection and a backup authentication method.</li></ul></div>
+<div class="topic"><h3>Likely questions</h3>
+<details><summary>What is cyber crime? Explain its types and jurisdiction problems.</summary><div class="ans"><p>Crime using a computer as target, tool or location; classify it against persons, property or government; courts must resolve locations, effects and applicable law.</p></div></details>
+<details><summary>Differentiate virus, worm, Trojan and logic bomb.</summary><div class="ans"><p>A virus attaches to files, a worm spreads autonomously, a Trojan masquerades as useful software, and a logic bomb waits for a trigger.</p></div></details>
+<details><summary>What is ethical hacking?</summary><div class="ans"><p>Authorised testing to find weaknesses; white hats have permission and a defined scope, while black hats act illegally.</p></div></details>
+<details><summary>Discuss biometric security and its challenges.</summary><div class="ans"><p>Identity is established through traits such as fingerprint or face; challenges include spoofing, error rates and the inability to replace leaked biological identifiers.</p></div></details>
+<ul class="check"><li><label><input type="checkbox" data-k="5-1"><span>I can define cyber crime and explain jurisdiction</span></label></li><li><label><input type="checkbox" data-k="5-2"><span>I know virus, worm, Trojan and logic bomb differences</span></label></li></ul></div>
+</section>
+
+<footer>End of guide. Revise by unit, tick the checklists, and write every answer with a definition, a table or flow, and an Indian example. Good luck with the exam.</footer>
+</div>
+<script>
+(function(){var r=document.documentElement;
+try{var s=localStorage.getItem('cl-theme');if(s)r.setAttribute('data-theme',s)}catch(e){}
+var tb=document.getElementById('tb');if(tb){tb.onclick=function(){var c=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');var n=c==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('cl-theme',n)}catch(e){}}}
+document.querySelectorAll('.check input').forEach(function(b){try{if(localStorage.getItem('cl-'+b.dataset.k)==='1')b.checked=true}catch(e){}
+b.onchange=function(){try{localStorage.setItem('cl-'+b.dataset.k,b.checked?'1':'0')}catch(e){}}});})();
+</script></body></html>
